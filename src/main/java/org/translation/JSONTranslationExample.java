@@ -42,8 +42,8 @@ public class JSONTranslationExample {
     }
 
     public String getAfghanistanCountryNameSpanishTranslation() {
-        final int THIRTY = 30;
-        JSONObject afghanistan = jsonArray.getJSONObject(THIRTY);
+        final int ZERO = 0;
+        JSONObject afghanistan = jsonArray.getJSONObject(ZERO);
         return afghanistan.getString("es");
     }
     // TODO Task: Complete the method below to generalize the above to get the country name
@@ -56,6 +56,7 @@ public class JSONTranslationExample {
      * @return the translation of country to the given language or "Country not found" if there is no translation.
      */
     public String getCountryNameTranslation(String countryCode, String languageCode) {
+
         return "Country not found";
     }
 
