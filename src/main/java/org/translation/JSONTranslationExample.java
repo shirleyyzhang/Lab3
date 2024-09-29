@@ -41,6 +41,11 @@ public class JSONTranslationExample {
         return canada.getString("es");
     }
 
+    public String getAfghanistanCountryNameSpanishTranslation() {
+        final int THIRTY = 30;
+        JSONObject afghanistan = jsonArray.getJSONObject(THIRTY);
+        return afghanistan.getString("es");
+    }
     // TODO Task: Complete the method below to generalize the above to get the country name
     //            for any country code and language code from sample.json.
 
