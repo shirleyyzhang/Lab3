@@ -58,7 +58,9 @@ public class JSONTranslationExample {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             if (jsonObject.getString("alpha3").equalsIgnoreCase(countryCode)) {
-                result = jsonObject.getString(languageCode);
+                if (jsonObject.has(languageCode)) {
+                    result = jsonObject.getString(languageCode);
+                }
             }
         }
         return result;
