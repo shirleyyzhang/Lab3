@@ -34,7 +34,7 @@ public class LanguageCodeConverter {
                     .getClassLoader().getResource(filename).toURI()));
             lines.iterator().forEachRemaining(line -> {
                 String[] parts = line.split("\t");
-                codeToLanguage.put(parts[0], parts[1]);
+                codeToLanguage.put(parts[1], parts[0]);
             });
         }
         catch (IOException | URISyntaxException ex) {
@@ -57,7 +57,12 @@ public class LanguageCodeConverter {
      * @return the 2-letter code of the language
      */
     public String fromLanguage(String language) {
-        return this.codeToLanguage.get(language);
+        for (Map.Entry<String, String> entry : this.codeToLanguage.entrySet()) {
+            if (entry.getValue().equals(language)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     /**
