@@ -1,9 +1,9 @@
 package org.translation;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+
 
 /**
  * Main class for this program.
@@ -16,6 +16,8 @@ import java.util.Scanner;
  */
 public class Main {
 
+    public static final String QUIT = "quit";
+
     /**
      * This is the main entry point of our Translation System!<br/>
      * A class implementing the Translator interface is created and passed into a call to runProgram.
@@ -23,7 +25,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-         Translator translator = new JSONTranslator();
+        Translator translator = new JSONTranslator();
 
 //        Translator translator = new InLabByHandTranslator();
 
@@ -41,18 +43,17 @@ public class Main {
         LanguageCodeConverter languageCodeConverter = new LanguageCodeConverter();
         while (true) {
             String country = promptForCountry(translator);
-            String quit = "quit";
-            if (country.equals(quit)) {
+            if (QUIT.equals(country)) {
                 break;
             }
-            country = countryCodeConverter.fromCountry(country);
-            String language = promptForLanguage(translator, country);
-            if (language.equals(quit)) {
+
+            String language = promptForLanguage(translator, countryCodeConverter.fromCountry(country));
+            if (language.equals(QUIT)) {
                 break;
             }
-            language = languageCodeConverter.fromLanguage(language);
-            System.out.println(countryCodeConverter.fromCountryCode(country) + " in " + languageCodeConverter
-                    .fromLanguageCode(language) + " is " + translator.translate(country, language));
+
+            System.out.println(country + " in " + language + " is " + translator.translate(countryCodeConverter
+                    .fromCountry(country), languageCodeConverter.fromLanguage(language)));
             System.out.println("Press enter to continue or quit to exit.");
             Scanner s = new Scanner(System.in);
             String textTyped = s.nextLine();
@@ -71,7 +72,7 @@ public class Main {
         for (String country : countries) {
             countryNames.add(converter.fromCountryCode(country));
         }
-        Collections.sort(countryNames);
+        countryNames.sort(null);
 
         for (String countryName : countryNames) {
             System.out.println(countryName);
@@ -93,7 +94,7 @@ public class Main {
             languageNames.add(converter.fromLanguageCode(language));
         }
 
-        Collections.sort(languageNames);
+        languageNames.sort(null);
 
         for (String language : languageNames) {
             System.out.println(language);
