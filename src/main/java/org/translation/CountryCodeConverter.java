@@ -34,10 +34,9 @@ public class CountryCodeConverter {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
 
-            for (int i = 0; i < lines.size(); i++) {
-                String line = lines.get(i);
-                this.mapCountryToCode.put(line.split(" ")[0], line.split(" ")[2]);
-                this.mapCodeToCountry.put(line.split(" ")[2], line.split(" ")[0]);
+            for (String line : lines) {
+                this.mapCountryToCode.put(line.split("\t")[0], line.split("\t")[2]);
+                this.mapCodeToCountry.put(line.split("\t")[2], line.split("\t")[0]);
             }
 
         }
