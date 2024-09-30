@@ -57,7 +57,12 @@ public class LanguageCodeConverter {
      * @return the 2-letter code of the language
      */
     public String fromLanguage(String language) {
-        return this.codeToLanguage.get(language);
+        for (Map.Entry<String, String> entry : this.codeToLanguage.entrySet()) {
+            if (language.equals(entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     /**
