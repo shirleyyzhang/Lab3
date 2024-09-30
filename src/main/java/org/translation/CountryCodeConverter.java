@@ -13,8 +13,8 @@ import java.util.Map;
  */
 public class CountryCodeConverter {
 
-    Map<String, String> mapCountryToCode = new HashMap<String, String>();
-    Map<String, String> mapCodeToCountry = new HashMap<String, String>();
+    private final Map<String, String> mapCountryToCode = new HashMap<String, String>();
+    private final Map<String, String> mapCodeToCountry = new HashMap<String, String>();
     /**
      * Default constructor which will load the country codes from "country-codes.txt"
      * in the resources folder.
